@@ -1,7 +1,6 @@
 <div>
     <div class="form-group">
         <label for="state"><b>Provinsi</b></label>
-
         <div class="col-md-12">
             <select wire:model="selectedState" class="form-control">
                 <option value="" selected>-- Pilih Provinsi --</option>
@@ -15,7 +14,6 @@
     @if (!is_null($selectedState))
         <div class="form-group">
             <label for="city"><b>Kota</b></label>
-
             <div class="col-md-12">
                 <select class="form-control" wire:model="selectedState2" name="id_kota">
                     <option value="" selected>-- Pilih Kota --</option>
@@ -30,7 +28,6 @@
     @if (!is_null($selectedState2))
         <div class="form-group">
             <label for="city"><b>Kecamatan</b></label>
-
             <div class="col-md-12">
                 <select class="form-control" wire:model="selectedState3" name="id_kecamatan">
                     <option value="" selected>-- Pilih Kecamatan --</option>
@@ -45,7 +42,6 @@
     @if (!is_null($selectedState3))
         <div class="form-group">
             <label for="city"><b>Kelurahan</b></label>
-
             <div class="col-md-12">
                 <select class="form-control" wire:model="selectedState4" name="id_kelurahan">
                     <option value="" selected>-- Pilih Kelurahan --</option>
@@ -60,7 +56,6 @@
     @if (!is_null($selectedState4))
         <div class="form-group">
             <label for="city"><b>RW</b></label>
-
             <div class="col-md-12">
                 <select class="form-control" wire:model="selectedState5" name="id_rw">
                     <option value="" selected>-- Pilih RW --</option>
