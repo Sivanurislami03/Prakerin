@@ -14,6 +14,7 @@
                <table class="table table-bordered table-striped">
                   <thead align="center">
                      <th>No</th>
+                     <th>Daerah</th>
                      <th>Nama RW</th>
                      <th>Positif</th>
                      <th>Sembuh</th>
@@ -26,6 +27,12 @@
                      @foreach ($kasus as $data)
                         <tr align="center">
                            <td>{{ $no++ }}</td>
+                           <td align="left">
+                           Provinsi: {{$data->rw->kelurahan->kecamatan->kota->provinsi->nama_provinsi}}<br>
+                           Kota: {{$data->rw->kelurahan->kecamatan->kota->nama_kota}}<br>
+                           Kecamatan: {{$data->rw->kelurahan->kecamatan->nama_kecamatan}}<br>
+                           Kelurahan: {{$data->rw->kelurahan->nama_kelurahan}}<br>
+                           </td>
                            <td>{{ $data->rw->nama }}</td>
                            <td>{{ $data->positif }}</td>
                            <td>{{ $data->sembuh }}</td>

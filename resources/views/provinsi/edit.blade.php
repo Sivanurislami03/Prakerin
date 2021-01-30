@@ -25,6 +25,7 @@
                         @enderror
                      </div>
                      <button type="submit" class="btn btn-primary">Add Data</button>
+                     <a href="{{ route('provinsi.index') }}" type="button" class="btn btn-warning">Back</a>
                   </form>
                </div>
             </div>

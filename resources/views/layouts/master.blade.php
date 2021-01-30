@@ -40,7 +40,7 @@
 			<div class="content">
 				<div class="page-inner">
 					<div class="page-header">
-                  <h4 class="page-title">TrackingCovid-19</h4>
+                  <h4 class="page-title"><b>TrackingCovid-19</b></h4>
                </div>
                @yield('content')
             </div>

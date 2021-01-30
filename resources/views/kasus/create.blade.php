@@ -44,6 +44,7 @@
                      </div>
                      <div class="form-group">
                         <button type="submit" class="btn btn-primary">Add Data</button>
+                        <a href="{{ route('kasus.index') }}" type="button" class="btn btn-warning">Back</a>
                      </div>
                   </form>
                </div>
