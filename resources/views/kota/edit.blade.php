@@ -14,14 +14,14 @@
                         <label for="" class="form-label"><b>Kode Kota</b></label>
                         <input type="badge badge-danger" class="form-control" name="kode_kota" value="{{$kota->kode_kota}}">
                         @error('kode_kota')
-                           <div class="alert alert-danger">{{ $message }}</div>
+                           <div class="badge badge-danger">{{ $message }}</div>
                         @enderror
                      </div>
                      <div class="form-group">
                         <label for="" class="form-label"><b>Nama Kota</b></label>
                         <input type="badge badge-danger" class="form-control" name="nama_kota" value="{{$kota->nama_kota}}">
                         @error('nama_kota')
-                           <div class="alert alert-danger">{{ $message }}</div>
+                           <div class="badge badge-danger">{{ $message }}</div>
                         @enderror
                      </div>
                      <div class="form-group">

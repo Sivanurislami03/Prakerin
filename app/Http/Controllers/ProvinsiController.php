@@ -45,11 +45,13 @@ class ProvinsiController extends Controller
    public function store(Request $request)
    {
       $request->validate([
-         'kode_provinsi' => 'required',
-         'nama_provinsi' => 'required',
+         'kode_provinsi' => 'required|unique:provinsis',
+         'nama_provinsi' => 'required|unique:provinsis',
       ],[
          'kode_provinsi.required' => 'Kode Provinsi tidak boleh kosong!',
-         'nama_provinsi.required' => 'Nama Provinsi tidak boleh kosong!'
+         'kode_provinsi.unique' => 'Kode Provinsi sudah terdaftar!',
+         'nama_provinsi.required' => 'Nama Provinsi tidak boleh kosong!',
+         'nama_provinsi.unique' =>'Nama Provinsi sudah terdaftar!'
       ]);
 
       $provinsi = new Provinsi; //mengambil/Menampung
@@ -97,7 +99,7 @@ class ProvinsiController extends Controller
          'nama_provinsi' => 'required',
       ],[
          'kode_provinsi.required' => 'Kode Provinsi tidak boleh kosong!',
-         'nama_provinsi.required' => 'Nama Provinsi tidak boleh kosong!'
+         'nama_provinsi.required' => 'Nama Provinsi tidak boleh kosong!',
       ]);
       
       $provinsi = Provinsi::findOrFail($id);
