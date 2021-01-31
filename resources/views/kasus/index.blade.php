@@ -15,7 +15,7 @@
                   <thead align="center">
                      <th>No</th>
                      <th>Daerah</th>
-                     <th>Nama RW</th>
+                     <th>RW</th>
                      <th>Positif</th>
                      <th>Sembuh</th>
                      <th>Meninggal</th>

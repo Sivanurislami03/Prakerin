@@ -39,6 +39,7 @@ class Select extends Component
                 $this->kelurahan = Kelurahan::where('id_kecamatan', $rw->kelurahan->id_kecamatan)->get();
                 $this->kecamatan = Kecamatan::where('id_kota', $rw->kelurahan->kecamatan->id_kota)->get();
                 $this->kota = Kota::where('id_provinsi', $rw->kelurahan->kecamatan->kota->id_provinsi)->get();
+                
                 $this->selectedState = $rw->kelurahan->kecamatan->kota->id_provinsi;
                 $this->selectedState2 = $rw->kelurahan->kecamatan->id_kota;
                 $this->selectedState3 = $rw->kelurahan->id_kecamatan;
