@@ -100,12 +100,12 @@
 
 <!-- Azzara JS -->
 <script src="{{ asset('assets/js/ready.min.js') }}"></script>
+
 <script>
-	
 $(document).ready(function() {
-			$('#basic-datatables').DataTable({
-			});
-		});
+	$('#basic-datatables').DataTable({
+	});
+});
 </script>
 
 </body>
