@@ -77,8 +77,8 @@ class ApiController extends Controller
                 ->where('provinsis.id', $id)
                 ->sum('kasuses.meninggal');
 
-        $provinsi = Provinsi::whereId($id)->first();
-        // $provinsi = Provinsi::findOrFail($id, 'nama_provinsi');
+        // $provinsi = Provinsi::whereId($id)->first();
+        $provinsi = Provinsi::findOrFail($id);
 
         $data = [
             'success' => true,
@@ -92,17 +92,28 @@ class ApiController extends Controller
         return response()->json($data,200);
     }
 
-    // public function provinsi2() {
-    //     $provinsi = DB::table('provinsis')
-    //             ->select('provinsis.kode_provinsi','provinsis.nama_provinsi',
-    //             DB::raw('SUM(kasuses.positif) as positif'),
-    //             DB::raw('SUM(kasuses.sembuh) as sembuh'),
-    //             DB::raw('SUM(kasuses.meninggal) as meninggal'));
-        
-    //     $data = [
-    //         'success' => true,
-    //         'Data' => $provinsi,
-    //         'message' => 'Data Kasus Ditampilkan'
-    //     ];
-    // }
+    public function provinsi2() {
+        $provinsi = DB::table('provinsis')
+                ->join('kotas', 'kotas.id_provinsi', '=', 'provinsis.id')
+                ->join('kecamatans', 'kecamatans.id_kota', '=', 'kotas.id')
+                ->join('kelurahans', 'kelurahans.id_kecamatan', '=', 'kecamatans.id')
+                ->join('rws', 'rws.id_kelurahan', '=', 'kelurahans.id')
+                ->join('kasuses', 'kasuses.id_rw', 'rws.id')
+                ->select('nama_provinsi',
+                    DB::raw('sum(kasuses.positif) as Positif'),
+                    DB::raw('sum(kasuses.sembuh) as sembuh'),
+                    DB::raw('sum(kasuses.meninggal) as meninggal'),
+                )
+                ->groupBy('nama_provinsi')
+                ->get();
+
+        $data = [
+            'status' => true,
+            'message' => 'Menampilkan Provinsi',
+            'data' => $provinsi,
+        ];
+   
+        return response()->json($data, 200);
+
+    }
 }
