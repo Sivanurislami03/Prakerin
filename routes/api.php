@@ -32,3 +32,4 @@ Route::post('provinsi/{id?}', [ProvinsiController::class, 'destroy']);
 
 // API Kasus
 Route::get('kasus', [ApiController::class, 'index']);
+Route::get('provinsii/{id?}', [ApiController::class, 'provinsi']);
