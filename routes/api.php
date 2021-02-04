@@ -24,14 +24,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // API Provinsi
-Route::get('provinsi', [ProvinsiController::class, 'index']);
-Route::post('provinsi', [ProvinsiController::class, 'store']);
-Route::get('provinsi/{id?}', [ProvinsiController::class, 'show']);
-Route::post('provinsi/update/{id?}', [ProvinsiController::class, 'update']);
-Route::post('provinsi/{id?}', [ProvinsiController::class, 'destroy']);
+// Route::get('provinsi', [ProvinsiController::class, 'index']);
+// Route::post('provinsi', [ProvinsiController::class, 'store']);
+// Route::get('provinsi/{id?}', [ProvinsiController::class, 'show']);
+// Route::post('provinsi/update/{id?}', [ProvinsiController::class, 'update']);
+// Route::post('provinsi/{id?}', [ProvinsiController::class, 'destroy']);
 
 // API Kasus
-Route::get('kasus', [ApiController::class, 'index']);
-Route::get('provinsii/{id?}', [ApiController::class, 'provinsi']);
-Route::get('provinsi2', [ApiController::class, 'provinsi2']);
-
+Route::get('indonesia', [ApiController::class, 'indonesia']);
+Route::get('indonesia/provinsiId/{id?}', [ApiController::class, 'provinsiId']);
+Route::get('indonesia/provinsi', [ApiController::class, 'provinsi']);
+Route::get('indonesia/kota', [ApiController::class, 'kota']);
+Route::get('indonesia/kotaId/{id?}', [ApiController::class, 'kotaId']);
+Route::get('indonesia/kecamatan', [ApiController::class, 'kecamatan']);
+Route::get('indonesia/kecamatanId/{id?}', [ApiController::class, 'kecamatanId']);
+Route::get('indonesia/kelurahan', [ApiController::class, 'kelurahan']);
+Route::get('indonesia/kelurahanId/{id?}', [ApiController::class, 'kelurahanId']);
