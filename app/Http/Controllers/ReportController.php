@@ -12,7 +12,7 @@ class ReportController extends Controller
                 ->select('kasuses.positif',
                 'kasuses.sembuh','kasuses.meninggal')
                 ->join('kasuses','rws.id','=','kasuses.id_rw')
-                ->sum('kasuses.positif');
+                ->sum('kasuses.posithhhif');
         $sembuh = DB::table('rws')
                 ->select('kasuses.positif',
                 'kasuses.sembuh','kasuses.meninggal')
