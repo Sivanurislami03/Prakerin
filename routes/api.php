@@ -40,3 +40,5 @@ Route::get('indonesia/kecamatan', [ApiController::class, 'kecamatan']);
 Route::get('indonesia/kecamatanId/{id?}', [ApiController::class, 'kecamatanId']);
 Route::get('indonesia/kelurahan', [ApiController::class, 'kelurahan']);
 Route::get('indonesia/kelurahanId/{id?}', [ApiController::class, 'kelurahanId']);
+Route::get('hari', [ApiController::class, 'hari']);
+Route::get('global', [ApiController::class, 'global']);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\Models\Provinsi;
 use App\Models\Kota;
@@ -34,12 +35,12 @@ class ApiController extends Controller
                 ->sum('kasuses.meninggal');
 
         $res = [
-            'success' => true,
+            'success'           => true,
             'Data'              => 'Data Kasus Indonesia',
             'Jumlah Positif'    => $positif,
             'Jumlah Sembuh'     => $sembuh,
             'Jumlah Meninggal'  => $meninggal,
-            'message' => 'Data Kasus Ditampilkan'
+            'message'           => 'Data Kasus Ditampilkan'
         ];
 
         return response()->json($res,200);
@@ -176,7 +177,7 @@ class ApiController extends Controller
 
         $data = [
             'success'           => true,
-            'Kota'          => $kota['nama_kota'],
+            'Kota'              => $kota['nama_kota'],
             'Jumlah Positif'    => $positif,
             'Jumlah Sembuh'     => $sembuh,
             'Jumlah Meninggal'  => $meninggal,
@@ -306,5 +307,50 @@ class ApiController extends Controller
         ];
 
         return response()->json($data,200);
+    }
+
+    public function hari() {
+        $kasus = Kasus::get('created_at')->last();
+        $positif = Kasus::where('tanggal', date('Y-m-d'))->sum('positif');
+        $sembuh = Kasus::where('tanggal', date('Y-m-d'))->sum('sembuh');
+        $meninggal = Kasus::where('tanggal', date('Y-m-d'))->sum('meninggal');
+
+        $join = DB::table('kasuses')
+                ->select('positif','sembuh','meninggal')
+                ->get();
+
+        $arr1 = [
+            'Data' => 'Data Kasus Seluruh Indonesia',
+            'Jumlah Positif' => $join->sum('positif'),
+            'Jumlah Sembuh' => $join->sum('sembuh'),
+            'Jumlah Meninggal' => $join->sum('meninggal'),
+        ];
+        $arr2 = [
+            'Data' => 'Data Kasus Hari Ini',
+            'Jumlah Positif' => $positif,
+            'Jumlah Sembuh' => $sembuh,
+            'Jumlah Meninggal' => $meninggal,
+        ];
+        $arr = [
+            'status' => 200,
+            'data' => [
+                'Hari Ini' => $arr2,
+                'total' => $arr1
+            ],
+            'message' => 'Berhasil'
+        ];
+        
+        return response()->json($arr, 200);    
+    }
+
+    public function global(){
+        $url = Http::get('https://api.kawalcorona.com/')->json();
+        $data = [
+            'success' => true,
+            'data' => $url,
+            'message' => 'Menampilkan Global'
+        ];
+
+        return response()->json($data, 200);
     }
 }

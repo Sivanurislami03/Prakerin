@@ -13,15 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\ReportController;
+Route::resource('/', ReportController::class);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/admin', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
 
 use App\Http\Controllers\ProvinsiController;
 Route::resource('provinsi', ProvinsiController::class);
@@ -39,10 +38,10 @@ use App\Http\Controllers\RwController;
 Route::resource('rw', RwController::class);
 
 use App\Http\Controllers\KasusController;
-ROute::resource('kasus', KasusController::class);
+Route::resource('kasus', KasusController::class);
 
 Route::view('states-city','livewire.home');
-    
+
 //  Route::group(['prefik' => 'backed','middleware' => 'auth'], function() {
 //     Route::get('test', function() {
 //         return view('halo'); });
