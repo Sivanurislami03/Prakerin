@@ -3,12 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Kasus;
-use App\Models\Kecamatan;
-use App\Models\Desa;
-use App\Models\Kota;
-use App\Models\Rw;
-use App\Models\Provinsi;
 use DB;
 
 class ReportController extends Controller
@@ -30,8 +24,6 @@ class ReportController extends Controller
                 ->join('kasuses','rws.id','=','kasuses.id_rw')
                 ->sum('kasuses.meninggal');
 
-        $data = Kasus::all();
-
         $provinsi = DB::table('provinsis')
         ->join('kotas', 'kotas.id_provinsi', '=', 'provinsis.id')
         ->join('kecamatans', 'kecamatans.id_kota', '=', 'kotas.id')
@@ -46,6 +38,6 @@ class ReportController extends Controller
         ->groupBy('kode_provinsi','nama_provinsi')
         ->get();
 
-        return view('frontend', compact('positif','sembuh','meninggal','data','provinsi'));
+        return view('frontend', compact('positif','sembuh','meninggal','provinsi'));
     }
 }

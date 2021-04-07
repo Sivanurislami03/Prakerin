@@ -51,7 +51,7 @@
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
                     <li class="active"><a href="/">Home</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#about">Table </a></li>
                 </ul>
             </nav><!-- .nav-menu -->
 
@@ -173,6 +173,7 @@
                 $data = file_get_contents('https://api.kawalcorona.com/');
                 $negara = json_decode($data, true);
                 ?>
+
                 <div class="card">
                     <div class="card-header">
                         <b>Data Coronavirus Global</b>
@@ -201,10 +202,10 @@
                                                 <th> <?php echo
                                                     number_format($data['attributes']['Confirmed']); ?>
                                                 </th>
-                                                <th><?php echo
+                                                <th> <?php echo
                                                     number_format($data['attributes']['Recovered']); ?>
                                                 </th>
-                                                <th><?php echo
+                                                <th> <?php echo
                                                     number_format($data['attributes']['Deaths']); ?>
                                                 </th>
                                             </tr>
